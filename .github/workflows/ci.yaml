@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+      - run: dart pub get
+      - name: Regenerate serializers (verify no drift)
+        run: dart run build_runner build
+      - name: Analyze
+        run: dart analyze
+      - name: Test
+        run: dart test

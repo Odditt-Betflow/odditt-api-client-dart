@@ -1,0 +1,6 @@
+# Keep the published archive lean — these are dev/generation artifacts, not
+# needed by consumers.
+.github/
+.openapi-generator/
+.openapi-generator-ignore
+openapitools.json

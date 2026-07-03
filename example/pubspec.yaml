@@ -1,0 +1,10 @@
+name: odditt_api_client_dart_example
+description: Minimal example calling the Odditt B2B API with the Dart client.
+publish_to: none
+
+environment:
+  sdk: '>=2.18.0 <4.0.0'
+
+dependencies:
+  odditt_api_client_dart:
+    path: ../
