@@ -1,9 +1,9 @@
 name: odditt_api_client_dart
 version: 0.1.0
 description: Dart client for the Odditt B2B Public API, generated from OpenAPI.
-homepage: https://github.com/odditt/odditt-api-client-dart
-repository: https://github.com/odditt/odditt-api-client-dart
-issue_tracker: https://github.com/odditt/odditt-api-client-dart/issues
+homepage: https://github.com/Odditt-Betflow/odditt-api-client-dart
+repository: https://github.com/Odditt-Betflow/odditt-api-client-dart
+issue_tracker: https://github.com/Odditt-Betflow/odditt-api-client-dart/issues
 
 topics:
   - betting

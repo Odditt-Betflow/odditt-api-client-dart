@@ -1,6 +1,6 @@
 # odditt_api_client_dart
 
-[![CI](https://github.com/odditt/odditt-api-client-dart/actions/workflows/ci.yaml/badge.svg)](https://github.com/odditt/odditt-api-client-dart/actions/workflows/ci.yaml)
+[![CI](https://github.com/Odditt-Betflow/odditt-api-client-dart/actions/workflows/ci.yaml/badge.svg)](https://github.com/Odditt-Betflow/odditt-api-client-dart/actions/workflows/ci.yaml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Typed Dart client for the **Odditt B2B Public API**, for partners building their
@@ -20,7 +20,7 @@ client + `built_value` models. Everything under `lib/` is generated and committe
 dependencies:
   odditt_api_client_dart:
     git:
-      url: https://github.com/odditt/odditt-api-client-dart.git
+      url: https://github.com/Odditt-Betflow/odditt-api-client-dart.git
       ref: v0.1.0
 ```
 
