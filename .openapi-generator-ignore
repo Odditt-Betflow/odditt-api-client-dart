@@ -32,3 +32,7 @@ analysis_options.yaml
 .github/**
 example/**
 test/**
+
+# Hand-written convenience auth layer (see lib/src/auth_session.dart). Preserve on regen.
+# Its export lives in lib/odditt_api_client_dart.dart.
+lib/src/auth_session.dart

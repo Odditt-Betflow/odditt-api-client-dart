@@ -67,3 +67,4 @@ export 'package:odditt_api_client_dart/src/model/v1_trends_by_betting_market_pos
 export 'package:odditt_api_client_dart/src/model/v1_trends_flows_by_id_post_request.dart';
 export 'package:odditt_api_client_dart/src/model/v1_trends_flows_post_request.dart';
 
+export 'src/auth_session.dart';

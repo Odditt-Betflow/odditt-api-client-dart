@@ -35,24 +35,38 @@ Then `dart pub get`. Works in Dart and Flutter apps.
 
 ## Authentication
 
-The API uses an **API key** (`X-API-Key` header) for most endpoints and **Bearer
-JWT** for the `/v1/auth` and `/v1/oauth` flows. Both are applied via Dio
-interceptors.
+You authenticate with **either** an API key **or** OAuth client credentials — you
+do not supply a Bearer token yourself. `AuthSession` exchanges your credential for
+a short-lived Bearer JWT (via `POST /v1/auth/login` or `POST /v1/oauth/login`) and
+transparently refreshes it before it expires. Data endpoints also accept the API
+key directly via the `X-API-Key` header, so no login round-trip is needed for them.
 
 ```dart
 import 'package:odditt_api_client_dart/odditt_api_client_dart.dart';
 
-final api = OddittApiClientDart(); // defaults to https://api.odditt.com
+// Option A — API key (X-API-Key on data endpoints; auto-login + refresh Bearer
+// for account endpoints):
+final session = AuthSession.fromApiKey('YOUR_API_KEY');
 
-// API key — the scheme name is `ApiKeyAuth`, sent as the `X-API-Key` header.
-api.setApiKey('ApiKeyAuth', '<your-api-key>');
+// Option B — OAuth client credentials (auto-refreshed Bearer everywhere):
+// final session = AuthSession.fromClientCredentials('CLIENT_ID', 'CLIENT_SECRET');
 
-// Bearer JWT (for endpoints secured with BearerAuth):
-api.setBearerAuth('BearerAuth', '<jwt>');
+final account = session.apiClient.getAccountApi();
+await account.v1AccountApiKeysGet();
 ```
 
-Override the base URL (e.g. staging) with
-`OddittApiClientDart(basePathOverride: 'https://api-staging.odditt.com')`.
+Override the base URL (e.g. staging) with `AuthSession.fromApiKey('...', basePath:
+'https://api-staging.odditt.com')`.
+
+<details>
+<summary>Low-level: applying credentials manually</summary>
+
+```dart
+final api = OddittApiClientDart();
+api.setApiKey('ApiKeyAuth', '<your-api-key>');  // sent as X-API-Key
+api.setBearerAuth('BearerAuth', '<jwt>');        // if you already hold a token
+```
+</details>
 
 ## Usage
 
