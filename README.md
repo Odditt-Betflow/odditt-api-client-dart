@@ -41,15 +41,25 @@ a short-lived Bearer JWT (via `POST /v1/auth/login` or `POST /v1/oauth/login`) a
 transparently refreshes it before it expires. Data endpoints also accept the API
 key directly via the `X-API-Key` header, so no login round-trip is needed for them.
 
+Authenticate with an **API key** (X-API-Key on data endpoints; auto-login +
+refresh Bearer for account endpoints):
+
 ```dart
 import 'package:odditt_api_client_dart/odditt_api_client_dart.dart';
 
-// Option A — API key (X-API-Key on data endpoints; auto-login + refresh Bearer
-// for account endpoints):
 final session = AuthSession.fromApiKey('YOUR_API_KEY');
 
-// Option B — OAuth client credentials (auto-refreshed Bearer everywhere):
-// final session = AuthSession.fromClientCredentials('CLIENT_ID', 'CLIENT_SECRET');
+final account = session.apiClient.getAccountApi();
+await account.v1AccountApiKeysGet();
+```
+
+Or authenticate with **OAuth client credentials** (auto-refreshed Bearer
+everywhere):
+
+```dart
+import 'package:odditt_api_client_dart/odditt_api_client_dart.dart';
+
+final session = AuthSession.fromClientCredentials('CLIENT_ID', 'CLIENT_SECRET');
 
 final account = session.apiClient.getAccountApi();
 await account.v1AccountApiKeysGet();
