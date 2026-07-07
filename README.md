@@ -10,7 +10,7 @@ for the drop-in embed widget).
 **Generated** from the OpenAPI spec with
 [`openapi-generator`](https://openapi-generator.tech) (`dart-dio`): a Dio HTTP
 client + `built_value` models. Everything under `lib/` is generated and committed
-— do not hand-edit it (see [Regenerating](#regenerating)).
+— do not hand-edit it.
 
 ## Install
 
@@ -97,25 +97,6 @@ names and models are documented under `doc/`.
 
 Errors surface as `DioException`; inspect `e.response?.statusCode` and
 `e.response?.data`.
-
-## Regenerating
-
-This client is generated from the shared spec in `../odditt-api-spec`
-(`openapi.json`), which is the single source of truth for **all** Odditt API
-clients. To update the Dart client:
-
-```bash
-cd ../odditt-api-spec
-bash generate.sh dart   # openapi-generator + dart pub get + build_runner
-```
-
-Then review the diff and commit. Never edit `lib/` by hand — changes are lost on
-the next regeneration (hand-authored files like this README, `pubspec.yaml`, and
-the example are protected via `.openapi-generator-ignore`). Custom helpers belong
-in a separate, non-generated file.
-
-The same spec drives Kotlin, Java, Swift, and TypeScript/React Native clients —
-see `../odditt-api-spec/README.md`.
 
 ## License
 
